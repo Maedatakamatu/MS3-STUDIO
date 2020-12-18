@@ -29,17 +29,7 @@ function sakura_theme_init() {
         "menu_icon" => "dashicons-table-col-before",//dashicon
         "show_in_rest" =>true,//新エディタ対応
     ]);
-    register_post_type('forum',[ //portfolioという投稿タイプを追加(英語)
-        "labels" => [
-            "name" => "問題投稿一覧"//管理画面に表示される名前
-        ],
-        "public" => true,//公開を許可
-        "has_archive" => true,//アーカイブの作成を許可
-        "hierarchical" => true,//継承を持たせる
-        "menu_position" => 25,//メニューバーに表示される場所。
-        "menu_icon" => "dashicons-table-col-before",//dashicon
-        "show_in_rest" =>true,//新エディタ対応
-    ]);
+    
 }
 add_action( 'init', 'sakura_theme_init' );
  

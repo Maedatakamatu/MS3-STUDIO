@@ -29,6 +29,7 @@ function sakura_theme_init() {
         "menu_icon" => "dashicons-table-col-before",//dashicon
         "show_in_rest" =>true,//新エディタ対応
     ]);
+    
 }
 add_action( 'init', 'sakura_theme_init' );
  
@@ -50,7 +51,7 @@ function clear_meta_box_order(){
     // 制作実績ページの編集画面
     delete_user_meta( wp_get_current_user()->ID, 'meta-box-order_portfolio' );
 }
-  add_action( 'admin_init', 'clear_meta_box_order' );
+add_action( 'admin_init', 'clear_meta_box_order' );
 
 //サイドバーを管理画面から編集したい場合
 function sakura_widgets_init() {

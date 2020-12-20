@@ -38,11 +38,15 @@ defined( 'ABSPATH' ) || exit;
 
 			<?php bbp_get_template_part( 'pagination', 'topics'    ); ?>
 
+			
+
 			<?php bbp_get_template_part( 'loop',       'topics'    ); ?>
 
 			<?php bbp_get_template_part( 'pagination', 'topics'    ); ?>
 
 			<?php bbp_get_template_part( 'form',       'topic'     ); ?>
+
+			
 
 		<?php elseif ( ! bbp_is_forum_category() ) : ?>
 

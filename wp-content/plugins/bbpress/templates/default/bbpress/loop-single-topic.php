@@ -102,4 +102,6 @@ defined( 'ABSPATH' ) || exit;
 
 		</p>
 	</li>
+	<li><?php echo do_shortcode('[wp_ulike]'); ?></li>
+	
 </ul><!-- #bbp-topic-<?php bbp_topic_id(); ?> -->

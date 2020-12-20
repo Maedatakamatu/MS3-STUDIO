@@ -22,6 +22,7 @@ do_action( 'bbp_template_before_topics_loop' ); ?>
 				: esc_html_e( 'Posts',   'bbpress' );
 			?></li>
 			<li class="bbp-topic-freshness"><?php esc_html_e( 'Last Post', 'bbpress' ); ?></li>
+			
 		</ul>
 	</li>
 
@@ -30,6 +31,7 @@ do_action( 'bbp_template_before_topics_loop' ); ?>
 		<?php while ( bbp_topics() ) : bbp_the_topic(); ?>
 
 			<?php bbp_get_template_part( 'loop', 'single-topic' ); ?>
+			
 
 		<?php endwhile; ?>
 

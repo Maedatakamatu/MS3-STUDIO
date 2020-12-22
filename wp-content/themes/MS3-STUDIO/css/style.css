@@ -1,0 +1,65 @@
+@charset "UTF-8";
+html {
+	overflow-y: scroll; /* IEへの対応 http://www.htmq.com/style/overflow-y.shtml */
+	/*Internet Explorerが独自に追加したプロパティ*/
+	/*画面に収まりきれなかったときにスクロールして表示することを許可するか否か*/
+}
+/* リセットおまじない--------------------------------- */
+
+body, h1, h2, h3, h4, h5, p, ul, ol, li, dl, dt, dd {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	background: #fff;
+	text-align: center;
+	font-size: 16px;
+	line-height: 1.4;
+	min-width: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+li {
+	list-style: none;
+}
+a {
+	outline: none;
+	color: inherit;
+    text-decoration: none;
+}
+img {
+	border: 0px;
+	vertical-align: bottom;
+}
+/* --------------------------------------------------- */
+/* 共通 */
+.btn {
+	color: #707070;
+	background-color: #F5E1A0;
+	border-color: white;
+}
+
+.btn:hover {
+	background-color: #F5939C;
+	border-color: white;
+}
+
+/* header */
+.accent_color {
+    color: #F5939C;
+}
+
+ /* ---footer--- */
+ .copyright-txt {
+    color: #F5E1A0;
+}
+
+.no-gutters {
+  margin:0;
+  padding:0;
+}
+ 
+.no-gutters > .col,
+.no-gutters > [class*="col-"] {
+  margin:0;
+  padding:0;
+}

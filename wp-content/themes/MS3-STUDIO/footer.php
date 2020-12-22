@@ -1,8 +1,17 @@
-<button id="pagetop"><a href="#"> page top</a></button>
+        <div class="copyright-txt">
+            <div class=".container-fluid">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                        <p class="text-center bg-dark text-white">Copyright &copy; Powerd by MS3-STUDIO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php wp_footer(); ?>
+</body>
 
-<footer>
-    <p class="copyright">Copyright &copy; Powerd by MS3-STUDIO</p>
-</footer>
+</html>
+
 <?php wp_footer(); ?>
 
 <!-- ブートストラップ -->

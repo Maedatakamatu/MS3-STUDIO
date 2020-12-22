@@ -11,8 +11,8 @@
     
     
         <a href="<?php echo get_post_type_archive_link("items");?>">商品一覧</a>
-        <?php echo do_shortcode('[bbp-topic-index]'); ?>
-        <?php echo do_shortcode('[bbp-topic-form]'); ?>
+        
+        <?php comments_template(); ?>
 
 
     <div class="sidebar"><!--サイドバーを表示するエリア flexの親要素-->

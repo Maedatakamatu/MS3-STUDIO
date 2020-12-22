@@ -68,35 +68,31 @@ function home_widgets_init() {
 add_action( 'widgets_init', 'home_widgets_init' );
 
 
-if( !function_exists('get_the_ulike_btn') ){
-    function get_the_ulike_btn( $post_id ){
-        global $wp_ulike_class,$wp_user_IP;
- 
-        $get_post_meta = get_post_meta($post_id, '_liked', true);
-        $get_like = $get_post_meta != '' ? $get_post_meta : 0;
-        $return_userID = $wp_ulike_class->get_reutrn_id();
-        $theme_class = wp_ulike_get_setting( 'wp_ulike_posts', 'theme');
- 
-        $data = array(
-            "id" => $post_id , //Post ID
-            "user_id" => $return_userID, //User ID (if the user is guest, we save ip as user_id with "ip2long" function)
-            "user_ip" => $wp_user_IP, //User IP
-            "get_like" => $get_like, //Number Of Likes
-            "method" => 'likeThis', //JavaScript method
-            "setting" => 'wp_ulike_posts', //Setting Key
-            "type" => 'post', //Function type (post/process)
-            "table" => 'ulike', //posts table
-            "column" => 'post_id', //ulike table column name 
-            "key" => '_liked', //meta key
-            "cookie" => 'liked-' //Cookie Name
-        );
- 
-        //call wp_get_ulike function from class-ulike calss
-        $counter = $wp_ulike_class->wp_get_ulike($data);
-        $wp_ulike = '<div id="wp-ulike-'.$post_ID.'" class="wpulike '.$theme_class.'">';
-        $wp_ulike .= '<div class="counter">'.$counter.'</div>';
-        $wp_ulike .= '</div>';
-        $wp_ulike .= $wp_ulike_class->get_liked_users($post_ID,'ulike','post_id','wp_ulike_posts');
-        echo $wp_ulike;
-    }
+function costom_comment($comment, $args, $depth) {
+    $GLOBALS['comment'] = $comment; ?>
+    <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+      <div id="comment-<?php comment_ID(); ?>">
+        <div class="comment-listCon">
+          <span class="comment-name">
+            <?php printf(__('<cite class="fn">%s</cite> <span class="says">より:</span>'), get_comment_author_link()) ?>
+          </span>
+          <span class="comment-date-edit">
+            <?php comment_date('Y/m/d(D)');?> <?php comment_time();?> <?php edit_comment_link(__('Edit'),'  ','') ?>
+          </span>
+       <?php if ($comment->comment_approved == '0') : ?>
+          <em><?php _e('Your comment is awaiting moderation.') ?></em><br />
+       <?php endif; ?>
+       <?php comment_text() ?>
+     </div>
+   </div>
+ <?php
 }
+ 
+function move_comment_field( $fields ) {
+   $comment_field = $fields['comment'];
+   unset( $fields['comment'] );
+   $fields['comment'] = $comment_field;
+   
+   return $fields;
+}
+ add_filter( 'comment_form_fields', 'move_comment_field' );

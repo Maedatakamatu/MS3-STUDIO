@@ -54,15 +54,45 @@ function clear_meta_box_order(){
 add_action( 'admin_init', 'clear_meta_box_order' );
 
 //サイドバーを管理画面から編集したい場合
-function sakura_widgets_init() {
+function home_widgets_init() {
     register_sidebar([
-        'name'			=> '桜サイドバー',
-        'id'			=> 'sakura-sidebar',
-        'description'	=> 'sakuraテーマ用サイドバーです',
+        'name'			=> 'Homeサイドバー',
+        'id'			=> 'home_sidebar',
+        'description'	=> 'home用サイドバーです',
         'before_widget'	=> '<div>',
         'after_widget'	=> '</div>',
         'before_title'	=> '<h2>',
         'after_title'	=> '</h2>',
     ]); 
 }
-add_action( 'widgets_init', 'sakura_widgets_init' );
+add_action( 'widgets_init', 'home_widgets_init' );
+
+
+function costom_comment($comment, $args, $depth) {
+    $GLOBALS['comment'] = $comment; ?>
+    <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+      <div id="comment-<?php comment_ID(); ?>">
+        <div class="comment-listCon">
+          <span class="comment-name">
+            <?php printf(__('<cite class="fn">%s</cite> <span class="says">より:</span>'), get_comment_author_link()) ?>
+          </span>
+          <span class="comment-date-edit">
+            <?php comment_date('Y/m/d(D)');?> <?php comment_time();?> <?php edit_comment_link(__('Edit'),'  ','') ?>
+          </span>
+       <?php if ($comment->comment_approved == '0') : ?>
+          <em><?php _e('Your comment is awaiting moderation.') ?></em><br />
+       <?php endif; ?>
+       <?php comment_text() ?>
+     </div>
+   </div>
+ <?php
+}
+ 
+function move_comment_field( $fields ) {
+   $comment_field = $fields['comment'];
+   unset( $fields['comment'] );
+   $fields['comment'] = $comment_field;
+   
+   return $fields;
+}
+ add_filter( 'comment_form_fields', 'move_comment_field' );

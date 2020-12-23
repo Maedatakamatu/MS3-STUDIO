@@ -2,7 +2,7 @@
             <div class=".container-fluid">
                 <div class="row no-gutters">
                     <div class="col-12">
-                        <p class="text-center bg-dark text-white">Copyright &copy; Powerd by MS3-STUDIO</p>
+                        <p class="text-center bg-dark footer_text">Powerd by MS3-STUDIO</p>
                     </div>
                 </div>
             </div>

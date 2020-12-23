@@ -1,7 +1,7 @@
 <hr class="hrcss" />
 <div id="comments">
-	 <?php
-	 $args = array(
+	<?php
+	$args = array(
 		'post_id' => $post->ID,
 	);
 	$comments_query = new WP_Comment_Query();
@@ -10,8 +10,11 @@
 	
 	foreach($comments as $comment) {
 		// メタフィールドから「いいね」数を取得
-		$count = get_comment_meta( $comment->comment_ID, '_commentliked', true );
-		$count = intval($count); // 文字列を数値に変換
+		//$count = get_comment_meta( $comments->comment_ID, '_commentliked', true );
+		
+		//$count = intval($count); // 文字列を数値に変換
+		$count = do_shortcode('[wp_ulike_counter type="comment" id=' . $idd . ' status="like"]');
+		
 	
 		// 「いいね」数順にソートするため、配列にぶっこむ
 		$comment_count_array[$comment->comment_ID]['count'] = $count;
@@ -29,7 +32,9 @@
 
 	echo    '<ul class="comments-list">';
 	echo    wp_list_comments( array( 'style'=>'ul' ), $comments );
-	echo "$count";
+	$idd = get_comment_ID();
+	
+	echo do_shortcode('[wp_ulike_counter type="comment" id=' . $idd . ' status="like"]');
 	echo "hogehoge";
 	echo    '</ul>';
 

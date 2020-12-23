@@ -13,7 +13,10 @@
                     <div class="carousel-caption d-none d-block">
                         <h1 class="display2">あなたの<span class="accent_color">アレ？</span>が常識を変える</h1>
                         <h3>問題発掘ツール</h3>
-                        <button type="botton" class="btn btn-primary btn-lg">はじめる</button>
+                        <a href="http://sunabaco.local/home/">
+                            <button type="botton" class="btn btn-primary btn-lg" onclick="location.href='./page-home.php'">はじめる</button>
+
+                        </a>
                     </div>
                 </div>
                 <div class="carousel-item">

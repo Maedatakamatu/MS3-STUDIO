@@ -49,7 +49,7 @@ img {
 }
 
  /* ---footer--- */
- .copyright-txt {
+ .footer_text {
     color: #F5E1A0;
 }
 
@@ -62,4 +62,67 @@ img {
 .no-gutters > [class*="col-"] {
   margin:0;
   padding:0;
+}
+
+.home {
+	background-color:#F2F2F2;
+	position: relative;
+	color:#707070;
+}
+
+.home_topic {
+	width: 800px;
+	margin: 300px 10vw  0 auto;
+}
+
+.home_container {
+	display: flex;
+}
+
+.comment-body {
+	padding: 0.5em 1em;
+	margin: 0.5em;
+    color: #707070;/*文字色*/
+    background: #FFF;
+	border: solid 1px #707070;/*線*/
+	position: relative;
+}
+
+.comment-author {
+	text-align: left;
+}
+
+.comment-meta {
+	position: absolute;
+	top: 90px;
+	left: 540px;
+}
+
+.wpulike {
+	text-align: left;
+}
+
+.reply {
+	text-align: right;
+}
+
+.comment-respond {
+	width: 800px;
+	position: absolute;
+	top: 60px;
+}
+
+textarea {
+	width: 100%;
+}
+
+.sidebar {
+	margin-left: 10vw
+}
+
+.sidebar_menu {
+	padding: 0.5em 1em;
+	margin: 0.5em;
+    color: #707070;/*文字色*/
+	border: solid 5px white;
 }

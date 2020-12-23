@@ -22,7 +22,7 @@
 	foreach($comment_count_array as $key=>$value) {
 		$counts[$key] = $value['count'];
 	}
-	array_multisort($counts, SORT_DESC, $comment_count_array);
+	array_multisort((array)$counts, SORT_DESC, $comment_count_array);
 	
 	// 'count'順にソートした配列からコメントオブジェクトを取り出す
 	$comments = array_column($comment_count_array, 'object');

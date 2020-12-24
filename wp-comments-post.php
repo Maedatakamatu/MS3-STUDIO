@@ -76,6 +76,7 @@ if ( ! $cookies_consent && 'unapproved' === wp_get_comment_status( $comment ) &&
  * @param WP_Comment $comment  Comment object.
  */
 $location = apply_filters( 'comment_post_redirect', $location, $comment );
-
+echo "ddd";
 wp_safe_redirect( $location );
 exit;
+?>

@@ -13,21 +13,23 @@
                     <div class="carousel-caption d-none d-block">
                         <h1 class="display2">あなたの<span class="accent_color">アレ？</span>が常識を変える</h1>
                         <h3>問題発掘ツール</h3>
+                        <br>
                         <a href="http://sunabaco.local/home/">
                             <button type="botton" class="btn btn-primary btn-lg" onclick="location.href='./page-home.php'">はじめる</button>
-
                         </a>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/photo_01.png" alt="" class="d-block w-100">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/photo_02.png" alt="" class="d-block w-100">
                     <div class="carousel-caption d-none d-block">
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/photo_01.png" alt="" class="d-block w-100">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/photo_03.png" alt="" class="d-block w-100">
                     <div class="carousel-caption d-none d-block">
-                        <h3>企業の方はこちら</h3>
+                        <h3 class="top03_text">企業の方はこちら</h3>
+                        <br>
+                        <br>
                         <button type="botton" class="btn btn-primary btn-lg">アカウント登録</button>
                         <button type="botton" class="btn btn-primary btn-lg">ログイン</button>
 

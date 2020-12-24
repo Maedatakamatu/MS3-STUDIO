@@ -127,3 +127,11 @@ textarea {
 	border: solid 5px white;
 
 }
+.wpulike-default::after{
+	
+	vertical-align: middle;
+	margin-left: 20px;
+	content: "Watch";
+	font-size: 20px;
+	color: #F5939C;
+}

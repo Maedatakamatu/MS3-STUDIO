@@ -87,6 +87,8 @@ function costom_comment($comment, $args, $depth) {
    </div>
  <?php
 }
+
+
  
 function move_comment_field( $fields ) {
    $comment_field = $fields['comment'];

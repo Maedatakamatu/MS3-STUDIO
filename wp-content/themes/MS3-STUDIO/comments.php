@@ -8,11 +8,14 @@
 		$comments = $comments_query->query( $args );
 		$comment_count_array = array();
 		
+		
+
 		foreach($comments as $comment) {
 			// メタフィールドから「いいね」数を取得
 			//$count = get_comment_meta( $comments->comment_ID, '_commentliked', true );
 			
 			//$count = intval($count); // 文字列を数値に変換
+			$idd = get_comment_ID();
 			$count = do_shortcode('[wp_ulike_counter type="comment" id=' . $idd . ' status="like"]');
 			
 		
@@ -40,7 +43,7 @@
 			
 			'post_id' => $post->ID,
 			
-			'title_reply' => 'Message',
+			'title_reply' => '投稿フォーム',
 			'comment_notes_before' => '',
 			'fields' => array(
 				'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
@@ -48,7 +51,7 @@
 				'email'  => '',
 				'url'    => '',
 				),
-			'label_submit' => __( 'コメントを送信' ),
+			'label_submit' => __( '投稿する' ),
 		);
 		comment_form( $args );
 		

@@ -40,8 +40,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-6 mx-auto">
-                    <a herf="#">
-                        <img src="<?php echo get_template_directory_uri(); ?>./img/logo.png"  width="89" height="30" alt="logo" class="logo"/>
+                    <a herf="http://sunabaco.local/">
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/logo.png"  width="89" height="30" alt="logo" class="logo"/>
                     </a>
                 </div>
             </div>

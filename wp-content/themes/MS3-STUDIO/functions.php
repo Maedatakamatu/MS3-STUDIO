@@ -5,33 +5,6 @@ function sakura_theme_setup() {
     add_theme_support('post-thumbnails');
 }
 add_action( 'after_setup_theme', 'sakura_theme_setup' );
-
-function sakura_theme_init() {
-    register_post_type('items',[ //itemsという投稿タイプを追加(英語)
-        "labels" => [
-            "name" => "商品"//管理画面に表示される名前
-        ],
-        "public" => true,//公開を許可
-        "has_archive" => true,//アーカイブの作成を許可
-        "hierarchical" => true,//継承を持たせる
-        "menu_position" => 25,//メニューバーに表示される場所。
-        "menu_icon" => "dashicons-cart",//dashicon
-        "show_in_rest" =>true,//新エディタ対応
-    ]);
-    register_post_type('portfolio',[ //portfolioという投稿タイプを追加(英語)
-        "labels" => [
-            "name" => "制作実績"//管理画面に表示される名前
-        ],
-        "public" => true,//公開を許可
-        "has_archive" => true,//アーカイブの作成を許可
-        "hierarchical" => true,//継承を持たせる
-        "menu_position" => 25,//メニューバーに表示される場所。
-        "menu_icon" => "dashicons-table-col-before",//dashicon
-        "show_in_rest" =>true,//新エディタ対応
-    ]);
-    
-}
-add_action( 'init', 'sakura_theme_init' );
  
 // styleとscriptを追加
 function sakura_theme_scripts() {
@@ -97,4 +70,41 @@ function move_comment_field( $fields ) {
    
    return $fields;
 }
- add_filter( 'comment_form_fields', 'move_comment_field' );
+add_filter( 'comment_form_fields', 'move_comment_field' );
+
+// 検索対象のテーブルを結合
+function my_posts_join( $join ) {
+    global $wpdb;
+
+    if ( is_search() ) {    
+		$join .= "LEFT JOIN $wpdb->postmeta ON $wpdb->posts.ID = $wpdb->postmeta.post_id ";
+		$join .= "LEFT JOIN $wpdb->comments ON $wpdb->posts.ID = $wpdb->comments.comment_post_ID ";
+	}
+
+    return $join;
+}
+add_filter('posts_join', 'my_posts_join' );
+
+// 検索条件に追加したテーブルを含める 
+function my_posts_where( $where ) {
+	global $wpdb;
+	
+	if ( is_search() ) {
+		$where = preg_replace(
+			"/\($wpdb->posts.post_title LIKE (\'[^\']+\')\)/",
+			"($wpdb->posts.post_title LIKE $1) OR ($wpdb->postmeta.meta_value LIKE $1) OR ($wpdb->comments.comment_content LIKE $1)",
+			$where
+		);
+	}
+
+	return $where;
+}
+add_filter( 'posts_where', 'my_posts_where' );
+
+// カスタムクエリの重複する投稿データを除外
+function my_posts_distinct() {
+    if ( is_search() ) {
+        return "DISTINCT";
+    }
+}
+add_filter( 'posts_distinct', 'my_posts_distinct' );
